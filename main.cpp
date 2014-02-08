@@ -20,10 +20,8 @@ int main(int argc, char *argv[]) {
 	// Show the tray icon.
 	TrayIcon trayIcon;
 	trayIcon.settings = settings;
+	trayIcon.settings_window = &w;
 	trayIcon.show();
-
-	// Open the settings window.
-	w.show();
 
 	return a.exec();
 }

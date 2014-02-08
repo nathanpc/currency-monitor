@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QMenu>
 
 #include "trayicon.h"
 
@@ -10,10 +11,36 @@ TrayIcon::TrayIcon(QObject *parent) : QObject(parent) {
 
 	qDebug() << "System Tray Available: " << trayIcon->isSystemTrayAvailable();
 	qDebug() << "Supports Message: " << trayIcon->supportsMessages();
+
+	populateMenu();
 }
 
+/**
+ * Displays the tray icon.
+ */
 void TrayIcon::show() {
 	trayIcon->show();
 	//trayIcon->showMessage("Testing", "Message?");
 	qDebug() << "Showing the tray icon.";
+}
+
+/**
+ * Populates the menu.
+ */
+void TrayIcon::populateMenu() {
+	QMenu *menu = new QMenu();
+
+	// Settings action.
+	QAction *settings_action = new QAction("Settings", menu);
+	connect(settings_action, SIGNAL(triggered()), this, SLOT(openSettings()));
+	menu->addAction(settings_action);
+
+	trayIcon->setContextMenu(menu);
+}
+
+/**
+ * Open the settings window.
+ */
+void TrayIcon::openSettings() {
+	settings_window->show();
 }
