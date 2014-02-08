@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 	ui->setupUi(this);
 
 	QPixmap icon = QPixmap(":/images/icon.png");
-	qDebug() << icon.size();
-	ui->label->setPixmap(icon);
+	//qDebug() << icon.size();
+	//ui->label->setPixmap(icon);
 }
 
 MainWindow::~MainWindow() {

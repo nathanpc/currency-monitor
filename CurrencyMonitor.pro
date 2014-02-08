@@ -13,15 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    trayicon.cpp
+		mainwindow.cpp \
+	trayicon.cpp
 
 HEADERS  += mainwindow.h \
-    trayicon.h
+	trayicon.h
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    images.qrc
+	images.qrc
 
-OTHER_FILES +=
+ICON = images/icon.png
