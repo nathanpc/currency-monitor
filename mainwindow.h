@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 namespace Ui {
 	class MainWindow;
@@ -11,11 +12,14 @@ class MainWindow : public QMainWindow {
 	Q_OBJECT
 
 	private:
-		void populateSettings();
 
 	public:
+		QSettings *settings;
+
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
+
+		void populateSettings(QSettings *settings);
 
 	private slots:
 		void on_buttonBox_rejected();

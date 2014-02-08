@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSystemTrayIcon>
+#include <QSettings>
 
 class TrayIcon : public QObject {
 	Q_OBJECT
@@ -11,6 +12,8 @@ class TrayIcon : public QObject {
 		QSystemTrayIcon *trayIcon;
 
 	public:
+		QSettings *settings;
+
 		explicit TrayIcon(QObject *parent = 0);
 
 		void show();

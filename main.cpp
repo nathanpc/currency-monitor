@@ -1,18 +1,23 @@
+#include <QApplication>
+#include <QSettings>
+
 #include "mainwindow.h"
 #include "trayicon.h"
-#include <QApplication>
 
 int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
-	// TODO: Get a global QSettings and pass it to both.
+	// Setup the settings.
+	QSettings *settings = new QSettings("DreamInTech", "CurrencyMonitor");
 
 	// Initialize the settings window.
 	MainWindow w;
 	w.setWindowFlags(Qt::Dialog | Qt::Desktop);
+	w.populateSettings(settings);
 
 	// Show the tray icon.
 	TrayIcon trayIcon;
+	trayIcon.settings = settings;
 	trayIcon.show();
 
 	// Open the settings window.
