@@ -12,6 +12,7 @@ class MainWindow : public QMainWindow {
 	Q_OBJECT
 
 	private:
+		Ui::MainWindow *ui;
 
 	public:
 		QSettings *settings;
@@ -20,13 +21,16 @@ class MainWindow : public QMainWindow {
 		~MainWindow();
 
 		void populateSettings(QSettings *settings);
+		void populateList();
 
 	private slots:
+		void addCurrency(QString from, QString to);
+
 		void on_buttonBox_rejected();
 		void on_buttonBox_accepted();
-
-	private:
-		Ui::MainWindow *ui;
+		void on_updateGroupBox_toggled(bool on);
+		void on_btAddCurrency_clicked();
+		void on_btRemoveCurrency_clicked();
 };
 
 #endif // MAINWINDOW_H

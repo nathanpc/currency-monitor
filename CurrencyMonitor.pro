@@ -14,12 +14,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
 		mainwindow.cpp \
-	trayicon.cpp
+	trayicon.cpp \
+    addcurrencydialog.cpp
 
 HEADERS  += mainwindow.h \
-	trayicon.h
+	trayicon.h \
+    addcurrencydialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addcurrencydialog.ui
 
 RESOURCES += \
 	images.qrc
