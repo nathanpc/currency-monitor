@@ -6,6 +6,8 @@
 
 int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
+	a.setApplicationDisplayName("Currency Monitor");
+	a.setApplicationVersion("1.0");
 
 	// Setup the settings.
 	QSettings *settings = new QSettings("DreamInTech", "CurrencyMonitor");
