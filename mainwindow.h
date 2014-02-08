@@ -10,9 +10,16 @@ namespace Ui {
 class MainWindow : public QMainWindow {
 	Q_OBJECT
 
+	private:
+		void populateSettings();
+
 	public:
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
+
+	private slots:
+		void on_buttonBox_rejected();
+		void on_buttonBox_accepted();
 
 	private:
 		Ui::MainWindow *ui;

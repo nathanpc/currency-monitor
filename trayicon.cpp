@@ -14,6 +14,6 @@ TrayIcon::TrayIcon(QObject *parent) : QObject(parent) {
 
 void TrayIcon::show() {
 	trayIcon->show();
-	trayIcon->showMessage("Testing", "Message?");
+	//trayIcon->showMessage("Testing", "Message?");
 	qDebug() << "Showing the tray icon.";
 }
