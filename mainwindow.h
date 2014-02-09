@@ -23,6 +23,9 @@ class MainWindow : public QMainWindow {
 		void populateSettings(QSettings *settings);
 		void populateList();
 
+	signals:
+		void settingsChanged();
+
 	private slots:
 		void addCurrency(QString from, QString to);
 

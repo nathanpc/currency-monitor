@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include "trayicon.h"
+#include "monitor.h"
 
 int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
@@ -22,6 +23,10 @@ int main(int argc, char *argv[]) {
 	trayIcon.settings = settings;
 	trayIcon.settings_window = &w;
 	trayIcon.show();
+
+	// Initialize the monitor.
+	Monitor *monitor = new Monitor(settings, &w, &trayIcon);
+	monitor->updateAll();
 
 	return a.exec();
 }

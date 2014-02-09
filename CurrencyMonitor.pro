@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,14 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
 		mainwindow.cpp \
 	trayicon.cpp \
-    addcurrencydialog.cpp
+	addcurrencydialog.cpp \
+	monitor.cpp
 
 HEADERS  += mainwindow.h \
 	trayicon.h \
-    addcurrencydialog.h
+	addcurrencydialog.h \
+	monitor.h
 
 FORMS    += mainwindow.ui \
-    addcurrencydialog.ui
+	addcurrencydialog.ui
 
 RESOURCES += \
 	images.qrc

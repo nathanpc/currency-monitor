@@ -25,10 +25,28 @@ void TrayIcon::show() {
 }
 
 /**
+ * Pops up a notification.
+ *
+ * @param title Notification title.
+ * @param message Notification message.
+ */
+void TrayIcon::notify(QString title, QString message) {
+	trayIcon->showMessage(title, message);
+}
+
+/**
  * Populates the menu.
  */
 void TrayIcon::populateMenu() {
 	QMenu *menu = new QMenu();
+
+	// Update action.
+	QAction *update_action = new QAction("Update", menu);
+	menu->addAction(update_action);
+
+	menu->addSeparator();
+	// TODO: Put the values here.
+	menu->addSeparator();
 
 	// Settings action.
 	QAction *settings_action = new QAction("Settings", menu);

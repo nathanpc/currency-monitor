@@ -22,6 +22,7 @@ class TrayIcon : public QObject {
 		explicit TrayIcon(QObject *parent = 0);
 
 		void show();
+		void notify(QString title, QString message);
 
 	signals:
 

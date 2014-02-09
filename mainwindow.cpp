@@ -84,6 +84,7 @@ void MainWindow::on_buttonBox_accepted() {
 
 	// Save the settings.
 	settings->sync();
+	emit settingsChanged();
 
 	// Log the settings.
 	qDebug() << "Saved the settings.";
