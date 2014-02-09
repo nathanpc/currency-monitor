@@ -12,7 +12,8 @@ TrayIcon::TrayIcon(QObject *parent) : QObject(parent) {
 	qDebug() << "System Tray Available: " << trayIcon->isSystemTrayAvailable();
 	qDebug() << "Supports Message: " << trayIcon->supportsMessages();
 
-	populateMenu();
+	QHash<QString, float> empty;
+	populateMenu(empty);
 }
 
 /**
@@ -36,16 +37,26 @@ void TrayIcon::notify(QString title, QString message) {
 
 /**
  * Populates the menu.
+ *
+ * @param exchange Currency hash.
  */
-void TrayIcon::populateMenu() {
+void TrayIcon::populateMenu(QHash<QString, float> exchange) {
 	QMenu *menu = new QMenu();
 
 	// Update action.
 	QAction *update_action = new QAction("Update", menu);
+	connect(update_action, SIGNAL(triggered()), this, SLOT(updateAll()));
 	menu->addAction(update_action);
 
 	menu->addSeparator();
-	// TODO: Put the values here.
+	for (int i = 0; i < exchange.keys().size(); ++i) {
+		QString ticker = exchange.keys()[i];
+		QString text;
+		text.sprintf("%s\t%.4f", ticker.toStdString().c_str(), exchange[ticker]);
+
+		QAction *exchange_action = new QAction(text, menu);
+		menu->addAction(exchange_action);
+	}
 	menu->addSeparator();
 
 	// Settings action.
@@ -61,4 +72,11 @@ void TrayIcon::populateMenu() {
  */
 void TrayIcon::openSettings() {
 	settings_window->show();
+}
+
+/**
+ * Manual update.
+ */
+void TrayIcon::updateAll() {
+	emit manualUpdateTriggered();
 }

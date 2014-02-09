@@ -38,6 +38,7 @@ class Monitor : public QObject {
 		void finishedRequest(QNetworkReply *reply);
 		void updateTimeout();
 		void settingsChanged();
+		void manualUpdate();
 
 };
 

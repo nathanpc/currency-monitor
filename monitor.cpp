@@ -10,6 +10,8 @@ Monitor::Monitor(QSettings *settings, MainWindow *settings_window,
 	this->settings = settings;
 	this->trayIcon = trayIcon;
 	this->settings_window = settings_window;
+
+	connect(this->trayIcon, SIGNAL(manualUpdateTriggered()), this, SLOT(manualUpdate()));
 	connect(this->settings_window, SIGNAL(settingsChanged()), this, SLOT(settingsChanged()));
 
 	timer = new QTimer(this);
@@ -85,6 +87,7 @@ void Monitor::updateMenuAndNotify(QString name, float value) {
 	}
 
 	// TODO: Update the menu!
+	trayIcon->populateMenu(values);
 }
 
 /**
@@ -119,4 +122,11 @@ void Monitor::settingsChanged() {
 	} else {
 		timer->stop();
 	}
+}
+
+/**
+ * Manual update triggered.
+ */
+void Monitor::manualUpdate() {
+	updateAll();
 }

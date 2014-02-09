@@ -13,8 +13,6 @@ class TrayIcon : public QObject {
 	private:
 		QSystemTrayIcon *trayIcon;
 
-		void populateMenu();
-
 	public:
 		QSettings *settings;
 		MainWindow *settings_window;
@@ -23,11 +21,14 @@ class TrayIcon : public QObject {
 
 		void show();
 		void notify(QString title, QString message);
+		void populateMenu(QHash<QString, float> exchange);
 
 	signals:
+		void manualUpdateTriggered();
 
 	public slots:
 		void openSettings();
+		void updateAll();
 };
 
 #endif // TRAYICON_H
